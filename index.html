@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professionista Scalabile — Roadmap Strategica Gratuita</title>
+  <meta name="description" content="Scopri i 5 colli di bottiglia che tengono in trappola il 99% dei professionisti tra €5k e €10k al mese. Masterclass gratuita.">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --red:      #C1001F;
+      --red-dk:   #9A0018;
+      --red-lt:   #E5001F;
+      --black:    #111111;
+      --dark:     #1A1A1A;
+      --dark2:    #242424;
+      --off-white:#F5F4F2;
+      --surface:  #FFFFFF;
+      --text:     #111111;
+      --muted:    rgba(17,17,17,.52);
+      --border:   rgba(17,17,17,.1);
+      --border-dk:rgba(255,255,255,.09);
+    }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+    /* ─── CSS CUSTOM PROPS PER BAND ─── */
+    .is-light {
+      --tx:       #111111;
+      --tx-sub:   rgba(17,17,17,.68);
+      --tx-muted: rgba(17,17,17,.5);
+      --bd:       rgba(17,17,17,.1);
+      --icon-bg:  rgba(193,0,31,.07);
+      --icon-bd:  rgba(193,0,31,.18);
+      --card-bg:  #ffffff;
+      --card-bd:  rgba(17,17,17,.1);
+    }
+    .is-dark {
+      --tx:       #ffffff;
+      --tx-sub:   rgba(255,255,255,.7);
+      --tx-muted: rgba(255,255,255,.45);
+      --bd:       rgba(255,255,255,.08);
+      --icon-bg:  rgba(193,0,31,.12);
+      --icon-bd:  rgba(193,0,31,.25);
+      --card-bg:  rgba(255,255,255,.04);
+      --card-bd:  rgba(255,255,255,.08);
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, box-shadow .3s;
+    }
+    .nav.scrolled { background: rgba(255,255,255,.99); box-shadow: 0 1px 0 var(--border); }
+    .nav-logo img { height: 30px; width: auto; display: block; }
+    .nav-cta {
+      position: relative; overflow: hidden;
+      padding: 10px 22px; background: var(--red); color: #fff;
+      border-radius: 6px; font-size: 13px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Satoshi', sans-serif; letter-spacing: .01em;
+      transition: background .2s, transform .15s;
+    }
+    .nav-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,.12);
+      transform: translateX(-105%); transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .nav-cta:hover::before { transform: translateX(0); }
+    .nav-cta:hover { background: var(--red-dk); transform: translateY(-1px); }
+
+    /* ─── HERO (WHITE) ─── */
+    .hero {
+      min-height: 100dvh;
+      display: grid; grid-template-columns: 54fr 46fr;
+      align-items: center; padding: 100px 52px 72px; gap: 64px;
+      position: relative; overflow: hidden;
+      background: var(--surface);
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+      background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(193,0,31,.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border: 1px solid rgba(193,0,31,.35); border-radius: 4px;
+      font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 28px; background: rgba(193,0,31,.06);
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(1.35); }
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4.6vw, 62px); font-weight: 900; line-height: 1.07;
+      letter-spacing: -2px; color: var(--black); margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+
+    .hero-sub {
+      font-size: 17px; color: rgba(17,17,17,.68); line-height: 1.82;
+      max-width: 500px; margin-bottom: 40px;
+    }
+    .hero-sub strong { color: var(--black); }
+
+    .btn-primary {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 32px; background: var(--red); color: #fff;
+      border-radius: 6px; font-family: 'Satoshi', sans-serif;
+      font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.12);
+      transform: translateX(-105%); transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { background: var(--red-dk); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(193,0,31,.32); }
+    .btn-primary:active { transform: translateY(0) scale(.98); }
+
+    .trust-bar {
+      display: flex; align-items: center; gap: 36px;
+      margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .trust-item { display: flex; flex-direction: column; }
+    .trust-num { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: var(--red); line-height: 1; }
+    .trust-lbl { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+
+    /* ─── VIDEO LOCKED ─── */
+    .hero-right { position: relative; z-index: 1; }
+    .video-locked {
+      position: relative; border-radius: 16px; overflow: hidden;
+      cursor: pointer; aspect-ratio: 16/9;
+      border: 1px solid rgba(17,17,17,.12);
+      box-shadow: 0 24px 64px rgba(17,17,17,.14), 0 0 0 1px rgba(193,0,31,.08);
+      transition: box-shadow .3s;
+    }
+    .video-locked:hover { box-shadow: 0 32px 80px rgba(17,17,17,.18), 0 0 0 1px rgba(193,0,31,.22); }
+    .video-locked-img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: blur(3px) brightness(.55); transform: scale(1.06);
+      transition: filter .4s, transform .4s;
+    }
+    .video-locked:hover .video-locked-img { filter: blur(2px) brightness(.65); transform: scale(1.09); }
+    .video-locked-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    }
+    .lock-icon {
+      width: 56px; height: 56px; background: var(--red); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 14px rgba(193,0,31,.14), 0 0 0 28px rgba(193,0,31,.06);
+      animation: lockPulse 2.5s ease-in-out infinite;
+      transition: background .2s;
+    }
+    .video-locked:hover .lock-icon { background: var(--red-lt); }
+    @keyframes lockPulse {
+      0%,100% { box-shadow: 0 0 0 14px rgba(193,0,31,.14), 0 0 0 28px rgba(193,0,31,.06); }
+      50%      { box-shadow: 0 0 0 18px rgba(193,0,31,.09), 0 0 0 36px rgba(193,0,31,.03); }
+    }
+    .lock-icon svg { width: 24px; height: 24px; fill: #fff; }
+    .video-locked-label {
+      font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.92);
+    }
+    .video-locked-sub { font-size: 12px; color: rgba(255,255,255,.5); }
+
+    /* ─── MARQUEE ─── */
+    .marquee-band {
+      padding: 22px 0; overflow: hidden;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--off-white);
+    }
+    .marquee-track {
+      display: flex; gap: 52px;
+      animation: marquee 24s linear infinite; width: max-content;
+    }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .marquee-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(17,17,17,.35); white-space: nowrap;
+    }
+    .marquee-dot { width: 5px; height: 5px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+
+    /* ─── BAND UTILS ─── */
+    .band { padding: 100px 52px; }
+    .band-inner { max-width: 1200px; margin: 0 auto; }
+    .band-white  { background: var(--surface); }
+    .band-off    { background: var(--off-white); }
+    .band-dark   { background: var(--black); }
+    .band-dark2  { background: var(--dark); }
+
+    /* ─── SHARED SECTION COMPONENTS ─── */
+    .sec-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 18px;
+    }
+    .sec-label::before { content: ''; width: 22px; height: 1.5px; background: var(--red); flex-shrink: 0; }
+
+    h2.sh2 {
+      font-size: clamp(30px, 3.8vw, 52px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.08;
+      color: var(--tx); margin-bottom: 20px;
+    }
+    h2.sh2 em { font-style: normal; color: var(--red); }
+
+    /* ─── SEZIONE 1 — LO SPECCHIO (DARK) ─── */
+    .pain-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+      margin-top: 52px;
+    }
+    .pain-col { display: flex; flex-direction: column; gap: 4px; }
+    .pain-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 22px 20px; border-left: 2px solid var(--bd);
+      border-radius: 0 8px 8px 0;
+      transition: border-color .25s, background .25s;
+    }
+    .pain-item:hover { border-color: var(--red); background: var(--icon-bg); }
+    .pain-icon {
+      width: 34px; height: 34px; border-radius: 7px;
+      background: var(--icon-bg); border: 1px solid var(--icon-bd);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+    }
+    .pain-icon svg { width: 16px; height: 16px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .pain-copy { font-size: 15px; color: var(--tx-sub); line-height: 1.7; }
+    .pain-copy strong { color: var(--tx); font-weight: 700; display: block; margin-bottom: 4px; }
+
+    /* ─── SEZIONE 2 — COSTO (OFF-WHITE) ─── */
+    .cost-body {
+      font-size: 18px; color: var(--tx-sub); line-height: 1.85;
+      max-width: 680px; margin-top: 28px;
+    }
+    .cost-body p { margin-bottom: 18px; }
+    .cost-body p:last-child { margin-bottom: 0; }
+    .cost-body strong { color: var(--tx); font-weight: 700; }
+    .cost-callout {
+      max-width: 720px; margin-top: 44px;
+      background: rgba(193,0,31,.07); border: 1px solid rgba(193,0,31,.2);
+      border-radius: 12px; padding: 36px 40px;
+    }
+    .cost-callout p { font-size: 19px; font-weight: 700; line-height: 1.75; color: var(--tx); }
+    .cost-callout em { font-style: normal; color: var(--red); }
+
+    /* ─── SEZIONE 3 — PROMESSA (DARK) ─── */
+    .promise-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin-top: 52px;
+    }
+    .promise-body { font-size: 16px; color: var(--tx-sub); line-height: 1.85; margin-top: 24px; }
+    .promise-body p { margin-bottom: 16px; }
+    .promise-body p:last-child { margin-bottom: 0; }
+    .promise-body strong { color: var(--tx); font-weight: 700; }
+    .promise-video { position: relative; cursor: pointer; }
+    .promise-video-frame {
+      border-radius: 14px; overflow: hidden; aspect-ratio: 16/9;
+      border: 1px solid var(--bd);
+      box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    }
+    .promise-video-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: blur(4px) brightness(.5); transform: scale(1.06);
+      transition: filter .3s, transform .3s;
+    }
+    .promise-video:hover .promise-video-frame img { filter: blur(2px) brightness(.65); transform: scale(1.09); }
+    .promise-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+    .play-btn {
+      width: 58px; height: 58px; background: var(--red); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 28px rgba(193,0,31,.5);
+      transition: transform .2s, background .2s;
+    }
+    .promise-video:hover .play-btn { transform: scale(1.1); background: var(--red-lt); }
+    .play-btn svg { width: 20px; height: 20px; fill: #fff; margin-left: 3px; }
+    .play-lbl { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+
+    /* ─── SEZIONE 4 — COSA SCOPRIRAI (WHITE) ─── */
+    .bullets { display: flex; flex-direction: column; margin-top: 48px; }
+    .bullet-row {
+      display: flex; gap: 22px; padding: 24px 0;
+      border-bottom: 1px solid var(--bd);
+    }
+    .bullet-row:first-child { border-top: 1px solid var(--bd); }
+    .bullet-n {
+      font-size: 11px; font-weight: 900; letter-spacing: .08em;
+      color: var(--red); flex-shrink: 0; width: 28px; line-height: 1.7; opacity: .75;
+    }
+    .bullet-t { font-size: 16px; color: var(--tx-sub); line-height: 1.75; }
+    .bullet-t strong { color: var(--tx); font-weight: 700; }
+
+    /* ─── SEZIONE 5 — CHI SONO (OFF-WHITE) ─── */
+    .who-grid {
+      display: grid; grid-template-columns: 36fr 64fr; gap: 72px; align-items: start; margin-top: 52px;
+    }
+    .who-photo-wrap { position: relative; }
+    .who-photo {
+      border-radius: 16px; overflow: hidden; aspect-ratio: 4/5;
+      border: 1px solid rgba(17,17,17,.12);
+      box-shadow: 0 24px 64px rgba(17,17,17,.14);
+    }
+    .who-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .who-badge {
+      position: absolute; bottom: -16px; right: -16px;
+      background: var(--red); padding: 14px 18px; border-radius: 10px;
+      font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase;
+      color: #fff; line-height: 1.5;
+      box-shadow: 0 12px 32px rgba(193,0,31,.38);
+    }
+    .who-content h3 {
+      font-size: clamp(26px, 2.8vw, 38px); font-weight: 900; letter-spacing: -1px; line-height: 1.12;
+      color: var(--tx); margin-bottom: 20px;
+    }
+    .who-content h3 em { font-style: normal; color: var(--red); }
+    .who-content p { font-size: 16px; color: var(--tx-sub); line-height: 1.85; margin-bottom: 16px; }
+    .who-content p strong { color: var(--tx); font-weight: 700; }
+
+    .cases-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 40px; }
+    .case-card {
+      background: var(--card-bg); border: 1px solid var(--card-bd);
+      border-radius: 12px; padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(17,17,17,.06);
+      transition: border-color .25s, box-shadow .25s, transform .2s;
+    }
+    .case-card:hover { border-color: rgba(193,0,31,.25); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(17,17,17,.1); }
+    .case-result { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--red); margin-bottom: 6px; }
+    .case-who { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-muted); margin-bottom: 10px; }
+    .case-desc { font-size: 13px; color: var(--tx-sub); line-height: 1.65; }
+
+    /* ─── SEZIONE 6 — OBIEZIONI (DARK) ─── */
+    .obj-list { display: flex; flex-direction: column; margin-top: 48px; max-width: 780px; }
+    .obj-item { border-bottom: 1px solid var(--bd); }
+    .obj-item:first-child { border-top: 1px solid var(--bd); }
+    .obj-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 22px 0; background: transparent; border: none; cursor: pointer; text-align: left;
+      font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 700; color: var(--tx-sub);
+      transition: color .2s;
+    }
+    .obj-q:hover { color: var(--tx); }
+    .obj-toggle {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border: 1.5px solid rgba(193,0,31,.35); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 300; color: var(--red);
+      transition: transform .3s, background .2s;
+    }
+    .obj-item.open .obj-toggle { transform: rotate(45deg); background: rgba(193,0,31,.1); }
+    .obj-a {
+      font-size: 15px; color: var(--tx-muted); line-height: 1.82;
+      max-height: 0; overflow: hidden; padding: 0;
+      transition: max-height .4s cubic-bezier(.16,1,.3,1), padding .3s;
+    }
+    .obj-item.open .obj-a { max-height: 300px; padding-bottom: 22px; }
+
+    /* ─── CTA FINALE (DARK + RED BLOB) ─── */
+    .cta-final {
+      padding: 120px 52px; text-align: center;
+      position: relative; overflow: hidden;
+      background: var(--black); border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .cta-blob {
+      position: absolute; width: 640px; height: 640px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(193,0,31,.2) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      filter: blur(90px); pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cta-quote {
+      font-size: clamp(30px, 4.2vw, 50px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1;
+      color: #fff; margin-bottom: 20px;
+    }
+    .cta-quote em { font-style: normal; color: var(--red); }
+    .cta-sub {
+      font-size: 17px; color: rgba(255,255,255,.62); line-height: 1.8;
+      max-width: 540px; margin: 0 auto 36px;
+    }
+    .urgency-strip {
+      max-width: 560px; margin: 0 auto 40px;
+      background: rgba(193,0,31,.08); border: 1px solid rgba(193,0,31,.2);
+      border-radius: 10px; padding: 20px 28px;
+      font-size: 15px; color: rgba(255,255,255,.78); line-height: 1.7;
+    }
+    .urgency-strip strong { color: #fff; }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(17,17,17,.75); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #fff; border: 1px solid rgba(17,17,17,.12);
+      border-radius: 16px; padding: 44px 40px;
+      width: 100%; max-width: 480px; position: relative;
+      box-shadow: 0 32px 80px rgba(17,17,17,.18);
+      transform: translateY(22px) scale(.97);
+      transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; cursor: pointer;
+      font-size: 22px; color: rgba(17,17,17,.3);
+      transition: color .2s; font-family: 'Satoshi', sans-serif; line-height: 1;
+    }
+    .modal-close:hover { color: var(--black); }
+    .modal-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 12px;
+    }
+    .modal-title { font-size: 24px; font-weight: 900; letter-spacing: -.5px; color: var(--black); margin-bottom: 8px; }
+    .modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.65; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label {
+      font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(17,17,17,.42);
+    }
+    .form-group label .req { color: var(--red); margin-left: 2px; }
+    .form-input {
+      background: var(--off-white); border: 1px solid rgba(17,17,17,.12);
+      border-radius: 8px; padding: 12px 14px;
+      font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 500; color: var(--black);
+      outline: none; transition: border-color .2s, background .2s;
+    }
+    .form-input::placeholder { color: rgba(17,17,17,.25); }
+    .form-input:focus { border-color: rgba(193,0,31,.5); background: #fff; box-shadow: 0 0 0 3px rgba(193,0,31,.07); }
+    .form-submit {
+      width: 100%; padding: 15px; background: var(--red); color: #fff;
+      border: none; border-radius: 8px; cursor: pointer;
+      font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700;
+      margin-top: 6px; transition: background .2s, transform .15s;
+    }
+    .form-submit:hover { background: var(--red-dk); transform: translateY(-1px); }
+    .form-submit:active { transform: scale(.98); }
+    .form-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .form-privacy { font-size: 11px; color: rgba(17,17,17,.35); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      padding: 28px 52px; border-top: 1px solid rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--black);
+    }
+    .footer-logo img { height: 24px; width: auto; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.4); }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s, transform .65s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:960px){
+      .hero { grid-template-columns: 1fr; padding: 100px 28px 60px; gap: 44px; }
+      .pain-grid { grid-template-columns: 1fr; gap: 4px; }
+      .promise-grid { grid-template-columns: 1fr; gap: 40px; }
+      .who-grid { grid-template-columns: 1fr; gap: 52px; }
+      .cases-row { grid-template-columns: 1fr; }
+      .band { padding: 72px 28px; }
+      .cta-final { padding: 80px 28px; }
+      .footer { flex-direction: column; gap: 14px; padding: 24px 28px; text-align: center; }
+      .nav { padding: 0 24px; }
+    }
+    @media(max-width:540px){
+      .form-row { grid-template-columns: 1fr; }
+      .modal-box { padding: 32px 24px; }
+      .trust-bar { gap: 20px; }
+      .cost-callout { padding: 24px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <a href="#" class="nav-logo">
+      <img src="https://altlifeagency.com/damachills/wp-content/uploads/2023/09/Risorsa-1@2x.png" alt="AltLife Agency">
+    </a>
+    <button class="nav-cta open-modal">Accedi alla Roadmap</button>
+  </nav>
+
+  <!-- ═══ HERO — WHITE ═══ -->
+  <section class="hero is-light">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">
+        <span class="eyebrow-dot"></span>
+        Per Coach, Consulenti, Freelance e Titolari di Agenzia
+      </div>
+      <h1 class="reveal">
+        Sei il collo di bottiglia<br>
+        della tua <em>stessa azienda.</em><br>
+        E lo sarai sempre,<br>
+        se non cambi <em>UNA cosa</em> oggi.
+      </h1>
+      <p class="hero-sub reveal">
+        Lavori 10, 12, a volte 14 ore al giorno. Hai clienti, competenza, risultati da mostrare.
+        Eppure il fatturato dice sempre la stessa cifra: tra <strong>€5.000 e €10.000 al mese.</strong>
+        Scopri i 5 colli di bottiglia che ti stanno tenendo in ostaggio.
+      </p>
+      <button class="btn-primary open-modal reveal">
+        Sì, voglio vedere la Roadmap Gratuita
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+      </button>
+      <div class="trust-bar reveal">
+        <div class="trust-item">
+          <span class="trust-num">20+</span>
+          <span class="trust-lbl">Min. di contenuto</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">5</span>
+          <span class="trust-lbl">Colli di bottiglia</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">100%</span>
+          <span class="trust-lbl">Gratuita</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="video-locked open-modal reveal" role="button" tabindex="0">
+        <img class="video-locked-img" src="./immagini/video-preview.png" alt="Roadmap Strategica Gratuita">
+        <div class="video-locked-overlay">
+          <div class="lock-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 11H7V7a5 5 0 0110 0v4zm-5 9a3 3 0 110-6 3 3 0 010 6zM5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z"/></svg>
+          </div>
+          <span class="video-locked-label">Inserisci i dati per accedere</span>
+          <span class="video-locked-sub">Roadmap Strategica Gratuita · 20 min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-band">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Professionista Scalabile</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Coach &amp; Consulenti</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Freelance &amp; Agenzie</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>5 Colli di Bottiglia</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Roadmap Gratuita</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Business Scalabile</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Metodo Provato</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Professionista Scalabile</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Coach &amp; Consulenti</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Freelance &amp; Agenzie</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>5 Colli di Bottiglia</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Roadmap Gratuita</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Business Scalabile</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Metodo Provato</span>
+    </div>
+  </div>
+
+  <!-- ═══ SEZ. 1 — LO SPECCHIO — DARK ═══ -->
+  <section class="band band-dark is-dark">
+    <div class="band-inner">
+      <div class="sec-label reveal">Lo Specchio</div>
+      <h2 class="sh2 reveal">Ecco cosa succede davvero<br>nella tua vita <em>in questo momento</em></h2>
+      <div class="pain-grid">
+        <div class="pain-col">
+          <div class="pain-item reveal">
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="pain-copy"><strong>Prima ancora del caffè</strong>Ti svegli e controlli già le email, perché se non rispondi tu, non risponde nessuno.</div>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.11 12.84 19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="pain-copy"><strong>Il cliente alle 21:00 di venerdì</strong>Ti scrive e tu rispondi — perché "meglio non perderlo."</div>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div class="pain-copy"><strong>Il calendario del mese prossimo</strong>Vedi buchi vuoti dove dovrebbero esserci clienti — e ti riparte quella stretta allo stomaco, la stessa di sempre.</div>
+          </div>
+        </div>
+        <div class="pain-col">
+          <div class="pain-item reveal">
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="pain-copy"><strong>Hai provato a delegare</strong>Una volta, forse due. È andata male, e ti sei ripromesso: "la prossima volta lo faccio io, più veloce e meglio."</div>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+            <div class="pain-copy"><strong>Hai comprato corsi</strong>Su Facebook Ads, Instagram, su come "scalare a 6 cifre." Qualcosa ti hanno insegnato. Ma nessuno ti ha detto la verità.</div>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div class="pain-copy"><strong>Il problema non è il marketing</strong>Il problema sei tu, incastrato in un sistema che non hai mai costruito per liberarti. Solo per sopravvivere.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEZ. 2 — IL COSTO — OFF-WHITE ═══ -->
+  <section class="band band-off is-light">
+    <div class="band-inner">
+      <div class="sec-label reveal">Il Costo di Non Agire</div>
+      <h2 class="sh2 reveal">Immagina tra <em>12 mesi.</em><br>Stesso schema. Stesse ore. Stesso tetto.</h2>
+      <div class="cost-body reveal">
+        <p>Solo che nel frattempo qualcun altro nella tua nicchia — magari meno bravo di te, magari con metà della tua esperienza — avrà costruito un team, un sistema, un business che gira anche quando lui non c'è. Avrà smesso di vendere ore.</p>
+        <p><strong>Tu no.</strong></p>
+        <p>Non è una minaccia. È matematica: quello che non cambi oggi, lo trascini identico nell'anno prossimo.</p>
+      </div>
+      <div class="cost-callout reveal">
+        <p>Ogni mese fermo a questa cifra non è un mese neutro. È un mese che non torna indietro, in cui il tuo tempo — <em>la risorsa che non puoi ricomprare</em> — è stato scambiato ancora una volta per un fatturato che non cresce.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEZ. 3 — LA PROMESSA — DARK ═══ -->
+  <section class="band band-dark2 is-dark">
+    <div class="band-inner">
+      <div class="promise-grid">
+        <div>
+          <div class="sec-label reveal">La Promessa</div>
+          <h2 class="sh2 reveal">Non è colpa tua.<br>È il <em>modello</em> che ti hanno venduto.</h2>
+          <div class="promise-body reveal">
+            <p>Ti hanno insegnato a essere il miglior consulente, il miglior freelance, il miglior titolare di agenzia possibile.</p>
+            <p><strong>Nessuno ti ha insegnato a costruire un business che non dipenda dal tuo tempo per esistere.</strong></p>
+            <p>Sono due mestieri completamente diversi. E finché li confondi, resterai bloccato.</p>
+            <p>In questa Roadmap Strategica gratuita ti mostro i 5 colli di bottiglia che tengono in trappola il 99% dei professionisti tra €5.000 e €10.000 al mese.</p>
+          </div>
+          <button class="btn-primary open-modal reveal" style="margin-top:32px;">
+            Accedi alla Roadmap Gratuita
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+          </button>
+        </div>
+        <div class="promise-video open-modal reveal" role="button" tabindex="0">
+          <div class="promise-video-frame">
+            <img src="./immagini/video-preview.png" alt="Roadmap Strategica">
+          </div>
+          <div class="promise-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+            <span class="play-lbl">Guarda la Roadmap · 20 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEZ. 4 — COSA SCOPRIRAI — WHITE ═══ -->
+  <section class="band band-white is-light">
+    <div class="band-inner">
+      <div class="sec-label reveal">Cosa Scoprirai</div>
+      <h2 class="sh2 reveal">In poco più di <em>20 minuti,</em> scoprirai:</h2>
+      <div class="bullets">
+        <div class="bullet-row reveal">
+          <span class="bullet-n">01</span>
+          <div class="bullet-t"><strong>Perché "lavorare di più" ti sta allontanando dalla scalabilità</strong>, non avvicinando — e qual è l'unica leva che conta davvero.</div>
+        </div>
+        <div class="bullet-row reveal">
+          <span class="bullet-n">02</span>
+          <div class="bullet-t"><strong>I 5 colli di bottiglia invisibili</strong> che bloccano il passaggio da "libero professionista molto impegnato" a "imprenditore che guadagna senza essere sempre presente."</div>
+        </div>
+        <div class="bullet-row reveal">
+          <span class="bullet-n">03</span>
+          <div class="bullet-t"><strong>Come far percepire il triplo del valore alla tua offerta attuale</strong> — stessi servizi, prezzo diverso, zero resistenza in più dai clienti.</div>
+        </div>
+        <div class="bullet-row reveal">
+          <span class="bullet-n">04</span>
+          <div class="bullet-t"><strong>Come smettere di andare a caccia di clienti</strong> ogni fine mese e costruire un sistema che porta clienti qualificati in modo prevedibile.</div>
+        </div>
+        <div class="bullet-row reveal">
+          <span class="bullet-n">05</span>
+          <div class="bullet-t"><strong>Il primo passo concreto per delegare senza perdere il controllo</strong> — quello che ti ha fatto fallire l'ultima volta che hai provato.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEZ. 5 — CHI SONO — OFF-WHITE ═══ -->
+  <section class="band band-off is-light">
+    <div class="band-inner">
+      <div class="sec-label reveal">Chi Sono</div>
+      <div class="who-grid">
+        <div class="who-photo-wrap reveal">
+          <div class="who-photo">
+            <img src="./immagini/persona.jpg" alt="Founder — Professionista Scalabile">
+          </div>
+          <div class="who-badge">Founder<br>AltLife Agency</div>
+        </div>
+        <div class="who-content">
+          <h3 class="reveal">Founder di 2 agency<br>e una <em>media company</em></h3>
+          <p class="reveal">Ho passato gli ultimi anni dentro le trincee di professionisti come te: coach, consulenti, freelance, titolari di agenzia. <strong>Bravissimi nel loro lavoro. Bloccati esattamente dove sei tu adesso.</strong></p>
+          <p class="reveal">Non per mancanza di talento. Per l'assenza di un sistema.</p>
+          <p class="reveal">Quel sistema oggi ha un nome: <strong>Professionista Scalabile</strong>. E in questa Masterclass ti mostro il cuore del metodo, gratis, senza trucchi.</p>
+          <div class="cases-row">
+            <div class="case-card reveal">
+              <div class="case-result">+€8k</div>
+              <div class="case-who">Coach · Milano</div>
+              <div class="case-desc">Da 5k a 13k mensili in 90 giorni applicando il metodo, senza assumere nessuno.</div>
+            </div>
+            <div class="case-card reveal">
+              <div class="case-result">×3</div>
+              <div class="case-who">Consulente · Roma</div>
+              <div class="case-desc">Triplicato il valore percepito dell'offerta. Stesso servizio, prezzo più alto, zero resistenza.</div>
+            </div>
+            <div class="case-card reveal">
+              <div class="case-result">−60%</div>
+              <div class="case-who">Agenzia · Napoli</div>
+              <div class="case-desc">Ridotte le ore operative costruendo il primo sistema di delega funzionante.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SEZ. 6 — OBIEZIONI — DARK ═══ -->
+  <section class="band band-dark is-dark">
+    <div class="band-inner">
+      <div class="sec-label reveal">Hai Dubbi?</div>
+      <h2 class="sh2 reveal">Le obiezioni più comuni.<br><em>Risposte oneste.</em></h2>
+      <div class="obj-list">
+        <div class="obj-item reveal">
+          <button class="obj-q">"Ho già provato altri corsi, non funzionano per me."<span class="obj-toggle">+</span></button>
+          <div class="obj-a">Probabilmente ti hanno insegnato tattiche: un funnel, un'ads, uno script di vendita. Qui parliamo di struttura — perché senza sistema, ogni tattica si scontra sempre contro lo stesso muro. Sei tu.</div>
+        </div>
+        <div class="obj-item reveal">
+          <button class="obj-q">"Non ho tempo per un'altra formazione."<span class="obj-toggle">+</span></button>
+          <div class="obj-a">Hai tempo per rispondere alle email alle 21:00 di venerdì. Ne hai 20 minuti per capire perché quelle email non finiranno mai, se non cambi qualcosa.</div>
+        </div>
+        <div class="obj-item reveal">
+          <button class="obj-q">"Il mio settore è diverso, questo non funziona per me."<span class="obj-toggle">+</span></button>
+          <div class="obj-a">I 5 colli di bottiglia non dipendono dal settore. Dipendono da come è strutturato il business. Coach, consulenti, freelance, agenzie: stesso schema, stessa via d'uscita.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA FINALE — DARK + BLOB ═══ -->
+  <section class="cta-final">
+    <div class="cta-blob"></div>
+    <div class="cta-inner">
+      <div class="sec-label reveal" style="justify-content:center; margin-bottom:24px;">
+        <span style="width:22px; height:1.5px; background:var(--red); display:inline-block; margin-right:10px; flex-shrink:0;"></span>
+        Inizia Adesso
+        <span style="width:22px; height:1.5px; background:var(--red); display:inline-block; margin-left:10px; flex-shrink:0;"></span>
+      </div>
+      <div class="cta-quote reveal">Le cose <em>NON cambiano.</em><br>Siamo noi che cambiamo.</div>
+      <p class="cta-sub reveal">Accedi ora alla Roadmap Strategica gratuita e scopri i 5 colli di bottiglia che ti separano da un business realmente scalabile.</p>
+      <div class="urgency-strip reveal">Ogni mese fermo a questa cifra è un mese che non torna indietro. Il tuo tempo — <strong>la risorsa che non puoi ricomprare</strong> — vale troppo per continuare così.</div>
+      <button class="btn-primary open-modal reveal" style="font-size:16px; padding:17px 44px;">
+        Sì, voglio la Roadmap Gratuita
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="#" class="footer-logo">
+      <img src="https://altlifeagency.com/damachills/wp-content/uploads/2023/09/Risorsa-1@2x.png" alt="AltLife Agency">
+    </a>
+    <p class="footer-copy">&copy; 2026 AltLife Agency · Tutti i diritti riservati</p>
+  </footer>
+
+  <!-- MODAL OPTIN -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">&#215;</button>
+      <div class="modal-eyebrow">Accesso Gratuito</div>
+      <h3 class="modal-title">Dove ti mando la Roadmap?</h3>
+      <p class="modal-sub">Inserisci i tuoi dati per accedere immediatamente alla Roadmap Strategica gratuita.</p>
+      <form id="optin-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-nome">Nome <span class="req">*</span></label>
+            <input class="form-input" type="text" id="f-nome" name="nome" placeholder="Mario" required>
+          </div>
+          <div class="form-group">
+            <label for="f-cognome">Cognome <span class="req">*</span></label>
+            <input class="form-input" type="text" id="f-cognome" name="cognome" placeholder="Rossi" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Email <span class="req">*</span></label>
+          <input class="form-input" type="email" id="f-email" name="email" placeholder="mario@esempio.com" required>
+        </div>
+        <div class="form-group">
+          <label for="f-telefono">Telefono <span class="req">*</span></label>
+          <input class="form-input" type="tel" id="f-telefono" name="telefono" placeholder="+39 333 1234567" required>
+        </div>
+        <button class="form-submit" type="submit" id="form-submit-btn">Accedi Subito alla Roadmap Gratuita</button>
+        <p class="form-privacy">Nessuno spam. I tuoi dati sono al sicuro e non verranno mai condivisi con terze parti.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // NAV SCROLL
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // MODAL
+    const modal    = document.getElementById('modal');
+    const closeBtn = document.getElementById('modal-close');
+    function openModal()  { modal.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+    document.querySelectorAll('.open-modal').forEach(el => el.addEventListener('click', openModal));
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // FORM SUBMIT
+    const GAS_URL = 'PLACEHOLDER_GAS_URL';
+    document.getElementById('optin-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn      = document.getElementById('form-submit-btn');
+      const nome     = document.getElementById('f-nome').value.trim();
+      const cognome  = document.getElementById('f-cognome').value.trim();
+      const email    = document.getElementById('f-email').value.trim();
+      const telefono = document.getElementById('f-telefono').value.trim();
+      if (!nome || !cognome || !email || !telefono) {
+        [['f-nome',nome],['f-cognome',cognome],['f-email',email],['f-telefono',telefono]].forEach(([id,val]) => {
+          if (!val) document.getElementById(id).style.borderColor = 'rgba(193,0,31,.7)';
+        });
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Un momento...';
+      try {
+        await fetch(GAS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, cognome, email, telefono }),
+          mode: 'no-cors'
+        });
+      } catch (_) {}
+      window.location.href = 'masterclass.html';
+    });
+    document.querySelectorAll('.form-input').forEach(input => {
+      input.addEventListener('focus', () => { input.style.borderColor = ''; });
+    });
+
+    // REVEAL ON SCROLL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ACCORDION
+    document.querySelectorAll('.obj-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.obj-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.obj-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
