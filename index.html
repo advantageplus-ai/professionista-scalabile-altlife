@@ -18,7 +18,6 @@
       --gold:     #D4AF37;
       --gold-dk:  #B8960E;
       --gold-lt:  #E5C84F;
-      --black:    #000000;
       --off-white:#F5F4EF;
       --surface:  #FFFFFF;
       --text:     #000000;
@@ -51,11 +50,11 @@
     }
     .is-dark {
       --tx:       #ffffff;
-      --tx-sub:   rgba(255,255,255,.75);
-      --tx-muted: rgba(255,255,255,.45);
+      --tx-sub:   rgba(255,255,255,.78);
+      --tx-muted: rgba(255,255,255,.5);
       --bd:       rgba(255,255,255,.1);
       --icon-bg:  rgba(212,175,55,.12);
-      --icon-bd:  rgba(212,175,55,.3);
+      --icon-bd:  rgba(212,175,55,.32);
       --card-bg:  rgba(255,255,255,.05);
       --card-bd:  rgba(255,255,255,.1);
     }
@@ -76,44 +75,39 @@
       width: 34px; height: 34px; background: var(--navy);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .logo-mark span {
-      font-size: 11px; font-weight: 900; letter-spacing: .04em; color: var(--gold);
-    }
-    .logo-name {
-      font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: .02em;
-      line-height: 1.25;
-    }
-    .logo-name em { font-style: normal; color: var(--gold); }
+    .logo-mark span { font-size: 12px; font-weight: 900; letter-spacing: .04em; color: var(--gold); }
+    .logo-name { font-size: 14px; font-weight: 700; color: var(--navy); letter-spacing: .02em; line-height: 1.25; }
+    .logo-name em { font-style: normal; color: var(--gold-dk); }
 
     .nav-cta {
-      padding: 10px 22px; background: var(--gold); color: #fff;
+      padding: 10px 24px; background: var(--gold); color: #fff;
       border: 2px solid var(--gold); border-radius: 0;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
       cursor: pointer; transition: background .2s, color .2s;
     }
     .nav-cta:hover { background: transparent; color: var(--gold); }
 
-    /* ─── HERO (WHITE) ─── */
+    /* ─── HERO (DARK NAVY) ─── */
     .hero {
       min-height: 100dvh;
       display: grid; grid-template-columns: 54fr 46fr;
       align-items: center; padding: 100px 52px 72px; gap: 64px;
       position: relative; overflow: hidden;
-      background: var(--surface);
+      background: var(--navy);
     }
     .hero::before {
-      content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%;
-      background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(212,175,55,.07) 0%, transparent 65%);
+      content: ''; position: absolute; top: 0; right: 0; width: 60%; height: 100%;
+      background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(212,175,55,.12) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-left { position: relative; z-index: 1; }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 5px 14px; border: 1px solid rgba(212,175,55,.4); border-radius: 0;
-      font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--gold-dk); margin-bottom: 28px; background: rgba(212,175,55,.06);
+      padding: 6px 16px; border: 1px solid rgba(212,175,55,.4); border-radius: 0;
+      font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px; background: rgba(212,175,55,.08);
     }
     .eyebrow-dot {
       width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
@@ -125,20 +119,20 @@
     }
 
     .hero h1 {
-      font-size: clamp(32px, 4.2vw, 58px); font-weight: 900; line-height: 1.1;
-      letter-spacing: -1.5px; color: var(--navy); margin-bottom: 24px;
+      font-size: clamp(34px, 4.4vw, 60px); font-weight: 900; line-height: 1.1;
+      letter-spacing: -1.5px; color: #fff; margin-bottom: 24px;
     }
-    .hero h1 em { font-style: normal; color: var(--gold-dk); }
+    .hero h1 em { font-style: normal; color: var(--gold); }
 
     .hero-sub {
-      font-size: 16px; color: rgba(0,0,0,.65); line-height: 1.85;
+      font-size: 18px; color: rgba(255,255,255,.72); line-height: 1.85;
       max-width: 500px; margin-bottom: 40px;
     }
-    .hero-sub strong { color: var(--navy); }
+    .hero-sub strong { color: #fff; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 32px; background: var(--gold); color: #fff;
+      padding: 15px 34px; background: var(--gold); color: #fff;
       border: 2px solid var(--gold); border-radius: 0;
       font-family: 'Montserrat', sans-serif;
       font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
@@ -151,35 +145,36 @@
 
     .trust-bar {
       display: flex; align-items: center; gap: 36px;
-      margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border);
+      margin-top: 44px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.12);
       flex-wrap: wrap;
     }
     .trust-item { display: flex; flex-direction: column; }
-    .trust-num { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: var(--navy); line-height: 1; }
-    .trust-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+    .trust-num { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--gold); line-height: 1; }
+    .trust-lbl { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 5px; }
 
     /* ─── VIDEO LOCKED ─── */
     .hero-right { position: relative; z-index: 1; }
     .video-locked {
       position: relative; overflow: hidden;
       cursor: pointer; aspect-ratio: 16/9;
-      border: 1px solid rgba(0,0,0,.12);
-      box-shadow: 0 24px 64px rgba(0,31,63,.18), 0 0 0 1px rgba(212,175,55,.12);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 24px 64px rgba(0,0,0,.45), 0 0 0 1px rgba(212,175,55,.15);
       transition: box-shadow .3s;
     }
-    .video-locked:hover { box-shadow: 0 32px 80px rgba(0,31,63,.22), 0 0 0 1px rgba(212,175,55,.3); }
+    .video-locked:hover { box-shadow: 0 32px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(212,175,55,.35); }
     .video-locked-img {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: blur(3px) brightness(.5); transform: scale(1.06);
+      filter: blur(3px) brightness(.45); transform: scale(1.06);
       transition: filter .4s, transform .4s;
     }
-    .video-locked:hover .video-locked-img { filter: blur(2px) brightness(.62); transform: scale(1.09); }
+    .video-locked:hover .video-locked-img { filter: blur(2px) brightness(.58); transform: scale(1.09); }
     .video-locked-overlay {
       position: absolute; inset: 0;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
     }
     .lock-icon {
-      width: 56px; height: 56px; background: var(--gold); border-radius: 0;
+      width: 60px; height: 60px; background: var(--gold); border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 0 0 14px rgba(212,175,55,.15), 0 0 0 28px rgba(212,175,55,.06);
       animation: lockPulse 2.5s ease-in-out infinite;
@@ -190,18 +185,18 @@
       0%,100% { box-shadow: 0 0 0 14px rgba(212,175,55,.15), 0 0 0 28px rgba(212,175,55,.06); }
       50%      { box-shadow: 0 0 0 18px rgba(212,175,55,.09), 0 0 0 36px rgba(212,175,55,.03); }
     }
-    .lock-icon svg { width: 24px; height: 24px; fill: #fff; }
+    .lock-icon svg { width: 26px; height: 26px; fill: #fff; }
     .video-locked-label {
-      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
       color: rgba(255,255,255,.92);
     }
-    .video-locked-sub { font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: .06em; }
+    .video-locked-sub { font-size: 13px; color: rgba(255,255,255,.5); letter-spacing: .06em; }
 
     /* ─── MARQUEE ─── */
     .marquee-band {
       padding: 22px 0; overflow: hidden;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(0,0,0,.1);
+      background: var(--navy-lt);
     }
     .marquee-track {
       display: flex; gap: 52px;
@@ -210,8 +205,8 @@
     @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
     .marquee-item {
       display: flex; align-items: center; gap: 12px;
-      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.4); white-space: nowrap;
+      font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.38); white-space: nowrap;
     }
     .marquee-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
 
@@ -226,13 +221,13 @@
     /* ─── SHARED SECTION COMPONENTS ─── */
     .sec-label {
       display: inline-flex; align-items: center; gap: 10px;
-      font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 18px;
     }
     .sec-label::before { content: ''; width: 22px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
 
     h2.sh2 {
-      font-size: clamp(28px, 3.6vw, 48px); font-weight: 900; letter-spacing: -1.2px; line-height: 1.1;
+      font-size: clamp(30px, 3.8vw, 50px); font-weight: 900; letter-spacing: -1.2px; line-height: 1.1;
       color: var(--tx); margin-bottom: 20px;
     }
     h2.sh2 em { font-style: normal; color: var(--gold); }
@@ -250,35 +245,35 @@
     }
     .pain-item:hover { border-color: var(--gold); background: var(--icon-bg); }
     .pain-icon {
-      width: 34px; height: 34px;
+      width: 36px; height: 36px;
       background: var(--icon-bg); border: 1px solid var(--icon-bd);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
     }
-    .pain-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .pain-copy { font-size: 14px; color: var(--tx-sub); line-height: 1.75; }
-    .pain-copy strong { color: var(--tx); font-weight: 700; display: block; margin-bottom: 4px; }
+    .pain-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .pain-copy { font-size: 15px; color: var(--tx-sub); line-height: 1.78; }
+    .pain-copy strong { color: var(--tx); font-weight: 700; display: block; margin-bottom: 4px; font-size: 16px; }
 
     /* ─── SEZIONE 2 — COSTO (OFF-WHITE) ─── */
     .cost-body {
-      font-size: 17px; color: var(--tx-sub); line-height: 1.85;
-      max-width: 680px; margin-top: 28px;
+      font-size: 18px; color: var(--tx-sub); line-height: 1.88;
+      max-width: 700px; margin-top: 28px;
     }
     .cost-body p { margin-bottom: 18px; }
     .cost-body p:last-child { margin-bottom: 0; }
     .cost-body strong { color: var(--tx); font-weight: 700; }
     .cost-callout {
-      max-width: 720px; margin-top: 44px;
+      max-width: 740px; margin-top: 44px;
       background: rgba(212,175,55,.08); border: 1px solid rgba(212,175,55,.25);
       padding: 36px 40px;
     }
-    .cost-callout p { font-size: 18px; font-weight: 700; line-height: 1.75; color: var(--tx); }
+    .cost-callout p { font-size: 19px; font-weight: 700; line-height: 1.78; color: var(--tx); }
     .cost-callout em { font-style: normal; color: var(--gold-dk); }
 
     /* ─── SEZIONE 3 — PROMESSA (DARK NAVY LT) ─── */
     .promise-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin-top: 52px;
     }
-    .promise-body { font-size: 15px; color: var(--tx-sub); line-height: 1.88; margin-top: 24px; }
+    .promise-body { font-size: 17px; color: var(--tx-sub); line-height: 1.9; margin-top: 24px; }
     .promise-body p { margin-bottom: 16px; }
     .promise-body p:last-child { margin-bottom: 0; }
     .promise-body strong { color: var(--tx); font-weight: 700; }
@@ -299,27 +294,27 @@
       align-items: center; justify-content: center; gap: 10px;
     }
     .play-btn {
-      width: 58px; height: 58px; background: var(--gold); border-radius: 0;
+      width: 62px; height: 62px; background: var(--gold); border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 8px 28px rgba(212,175,55,.45);
       transition: transform .2s, background .2s;
     }
     .promise-video:hover .play-btn { transform: scale(1.1); background: var(--gold-lt); }
-    .play-btn svg { width: 20px; height: 20px; fill: #fff; margin-left: 3px; }
-    .play-lbl { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+    .play-btn svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+    .play-lbl { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65); }
 
     /* ─── SEZIONE 4 — COSA SCOPRIRAI (WHITE) ─── */
     .bullets { display: flex; flex-direction: column; margin-top: 48px; }
     .bullet-row {
-      display: flex; gap: 22px; padding: 24px 0;
+      display: flex; gap: 22px; padding: 26px 0;
       border-bottom: 1px solid var(--bd);
     }
     .bullet-row:first-child { border-top: 1px solid var(--bd); }
     .bullet-n {
-      font-size: 11px; font-weight: 900; letter-spacing: .08em;
+      font-size: 12px; font-weight: 900; letter-spacing: .08em;
       color: var(--gold); flex-shrink: 0; width: 28px; line-height: 1.7; opacity: .8;
     }
-    .bullet-t { font-size: 15px; color: var(--tx-sub); line-height: 1.78; }
+    .bullet-t { font-size: 17px; color: var(--tx-sub); line-height: 1.8; }
     .bullet-t strong { color: var(--tx); font-weight: 700; }
 
     /* ─── SEZIONE 5 — CHI SONO (OFF-WHITE) ─── */
@@ -336,16 +331,16 @@
     .who-badge {
       position: absolute; bottom: -16px; right: -16px;
       background: var(--navy); padding: 14px 18px;
-      font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase;
+      font-size: 13px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase;
       color: var(--gold); line-height: 1.5;
       box-shadow: 0 12px 32px rgba(0,31,63,.3);
     }
     .who-content h3 {
-      font-size: clamp(24px, 2.6vw, 36px); font-weight: 900; letter-spacing: -1px; line-height: 1.12;
+      font-size: clamp(26px, 2.8vw, 38px); font-weight: 900; letter-spacing: -1px; line-height: 1.12;
       color: var(--tx); margin-bottom: 20px;
     }
     .who-content h3 em { font-style: normal; color: var(--gold-dk); }
-    .who-content p { font-size: 15px; color: var(--tx-sub); line-height: 1.88; margin-bottom: 16px; }
+    .who-content p { font-size: 17px; color: var(--tx-sub); line-height: 1.9; margin-bottom: 16px; }
     .who-content p strong { color: var(--tx); font-weight: 700; }
 
     .cases-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 40px; }
@@ -355,9 +350,9 @@
       transition: border-color .25s, box-shadow .25s, transform .2s;
     }
     .case-card:hover { border-color: rgba(212,175,55,.35); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
-    .case-result { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--navy); margin-bottom: 6px; }
-    .case-who { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-muted); margin-bottom: 10px; }
-    .case-desc { font-size: 13px; color: var(--tx-sub); line-height: 1.65; }
+    .case-result { font-size: 30px; font-weight: 900; letter-spacing: -1px; color: var(--navy); margin-bottom: 6px; }
+    .case-who { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-muted); margin-bottom: 10px; }
+    .case-desc { font-size: 15px; color: var(--tx-sub); line-height: 1.68; }
 
     /* ─── SEZIONE 6 — OBIEZIONI (DARK NAVY) ─── */
     .obj-list { display: flex; flex-direction: column; margin-top: 48px; max-width: 780px; }
@@ -365,25 +360,25 @@
     .obj-item:first-child { border-top: 1px solid var(--bd); }
     .obj-q {
       width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding: 22px 0; background: transparent; border: none; cursor: pointer; text-align: left;
-      font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--tx-sub);
+      padding: 24px 0; background: transparent; border: none; cursor: pointer; text-align: left;
+      font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--tx-sub);
       transition: color .2s;
     }
     .obj-q:hover { color: var(--tx); }
     .obj-toggle {
-      width: 24px; height: 24px; flex-shrink: 0;
+      width: 26px; height: 26px; flex-shrink: 0;
       border: 1.5px solid rgba(212,175,55,.4); border-radius: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 300; color: var(--gold);
+      font-size: 18px; font-weight: 300; color: var(--gold);
       transition: transform .3s, background .2s;
     }
     .obj-item.open .obj-toggle { transform: rotate(45deg); background: rgba(212,175,55,.12); }
     .obj-a {
-      font-size: 14px; color: var(--tx-muted); line-height: 1.85;
+      font-size: 16px; color: var(--tx-muted); line-height: 1.88;
       max-height: 0; overflow: hidden; padding: 0;
       transition: max-height .4s cubic-bezier(.16,1,.3,1), padding .3s;
     }
-    .obj-item.open .obj-a { max-height: 300px; padding-bottom: 22px; }
+    .obj-item.open .obj-a { max-height: 300px; padding-bottom: 24px; }
 
     /* ─── CTA FINALE (DARK NAVY + GOLD BLOB) ─── */
     .cta-final {
@@ -399,26 +394,26 @@
     }
     .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
     .cta-quote {
-      font-size: clamp(28px, 3.8vw, 48px); font-weight: 900; letter-spacing: -1.2px; line-height: 1.1;
+      font-size: clamp(30px, 4.2vw, 50px); font-weight: 900; letter-spacing: -1.2px; line-height: 1.1;
       color: #fff; margin-bottom: 20px;
     }
     .cta-quote em { font-style: normal; color: var(--gold); }
     .cta-sub {
-      font-size: 16px; color: rgba(255,255,255,.62); line-height: 1.82;
+      font-size: 18px; color: rgba(255,255,255,.62); line-height: 1.85;
       max-width: 540px; margin: 0 auto 36px;
     }
     .urgency-strip {
       max-width: 560px; margin: 0 auto 40px;
       background: rgba(212,175,55,.08); border: 1px solid rgba(212,175,55,.22);
-      padding: 20px 28px;
-      font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.75;
+      padding: 22px 32px;
+      font-size: 16px; color: rgba(255,255,255,.78); line-height: 1.78;
     }
     .urgency-strip strong { color: #fff; }
 
     /* ─── MODAL ─── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,31,63,.75); backdrop-filter: blur(8px);
+      background: rgba(0,31,63,.8); backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: center; padding: 20px;
       opacity: 0; pointer-events: none; transition: opacity .3s;
     }
@@ -427,7 +422,7 @@
       background: #fff; border: 1px solid rgba(0,0,0,.1);
       padding: 44px 40px;
       width: 100%; max-width: 480px; position: relative;
-      box-shadow: 0 32px 80px rgba(0,31,63,.25);
+      box-shadow: 0 32px 80px rgba(0,31,63,.3);
       transform: translateY(22px) scale(.97);
       transition: transform .4s cubic-bezier(.16,1,.3,1);
     }
@@ -440,38 +435,38 @@
     }
     .modal-close:hover { color: var(--navy); }
     .modal-eyebrow {
-      font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
       color: var(--gold-dk); margin-bottom: 12px;
     }
-    .modal-title { font-size: 22px; font-weight: 900; letter-spacing: -.5px; color: var(--navy); margin-bottom: 8px; }
-    .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.65; }
+    .modal-title { font-size: 24px; font-weight: 900; letter-spacing: -.5px; color: var(--navy); margin-bottom: 8px; }
+    .modal-sub { font-size: 15px; color: var(--muted); margin-bottom: 28px; line-height: 1.68; }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
     .form-group label {
-      font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
       color: rgba(0,0,0,.42);
     }
     .form-group label .req { color: var(--gold-dk); margin-left: 2px; }
     .form-input {
       background: var(--off-white); border: 1px solid rgba(0,0,0,.12);
-      border-radius: 0; padding: 12px 14px;
-      font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; color: var(--navy);
+      border-radius: 0; padding: 13px 15px;
+      font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; color: var(--navy);
       outline: none; transition: border-color .2s, background .2s;
     }
-    .form-input::placeholder { color: rgba(0,0,0,.25); }
+    .form-input::placeholder { color: rgba(0,0,0,.28); }
     .form-input:focus { border-color: rgba(212,175,55,.6); background: #fff; box-shadow: 0 0 0 3px rgba(212,175,55,.08); }
     .form-submit {
-      width: 100%; padding: 15px; background: var(--gold); color: #fff;
+      width: 100%; padding: 16px; background: var(--gold); color: #fff;
       border: 2px solid var(--gold); border-radius: 0; cursor: pointer;
-      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
       letter-spacing: .1em; text-transform: uppercase;
       margin-top: 6px; transition: background .2s, color .2s, transform .15s;
     }
     .form-submit:hover { background: transparent; color: var(--gold); }
     .form-submit:active { transform: scale(.98); }
     .form-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-    .form-privacy { font-size: 11px; color: rgba(0,0,0,.35); text-align: center; margin-top: 12px; line-height: 1.5; }
+    .form-privacy { font-size: 13px; color: rgba(0,0,0,.38); text-align: center; margin-top: 12px; line-height: 1.55; }
 
     /* ─── FOOTER ─── */
     .footer {
@@ -484,9 +479,9 @@
       width: 28px; height: 28px; background: var(--gold);
       display: flex; align-items: center; justify-content: center;
     }
-    .footer-logo-mark span { font-size: 10px; font-weight: 900; color: var(--navy); letter-spacing: .02em; }
-    .footer-logo-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.6); letter-spacing: .04em; }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,.35); }
+    .footer-logo-mark span { font-size: 11px; font-weight: 900; color: var(--navy); letter-spacing: .02em; }
+    .footer-logo-name { font-size: 14px; font-weight: 700; color: rgba(255,255,255,.6); letter-spacing: .04em; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.35); }
 
     /* ─── REVEAL ─── */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s, transform .65s cubic-bezier(.16,1,.3,1); }
@@ -523,8 +518,8 @@
     <button class="nav-cta open-modal">Accedi alla Roadmap</button>
   </nav>
 
-  <!-- ═══ HERO — WHITE ═══ -->
-  <section class="hero is-light">
+  <!-- HERO — DARK NAVY -->
+  <section class="hero is-dark">
     <div class="hero-left">
       <div class="hero-eyebrow reveal">
         <span class="eyebrow-dot"></span>
@@ -595,7 +590,7 @@
     </div>
   </div>
 
-  <!-- ═══ SEZ. 1 — LO SPECCHIO — DARK NAVY ═══ -->
+  <!-- SEZ. 1 — LO SPECCHIO — DARK NAVY -->
   <section class="band band-dark is-dark">
     <div class="band-inner">
       <div class="sec-label reveal">Lo Specchio</div>
@@ -608,11 +603,11 @@
           </div>
           <div class="pain-item reveal">
             <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.11 12.84 19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div class="pain-copy"><strong>Il cliente alle 21:00 di venerdì</strong>Ti scrive e tu rispondi — perché "meglio non perderlo."</div>
+            <div class="pain-copy"><strong>Il cliente alle 21:00 di venerdì</strong>Ti scrive e tu rispondi, perché "meglio non perderlo."</div>
           </div>
           <div class="pain-item reveal">
             <div class="pain-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <div class="pain-copy"><strong>Il calendario del mese prossimo</strong>Vedi buchi vuoti dove dovrebbero esserci clienti — e ti riparte quella stretta allo stomaco, la stessa di sempre.</div>
+            <div class="pain-copy"><strong>Il calendario del mese prossimo</strong>Vedi buchi vuoti dove dovrebbero esserci clienti e ti riparte quella stretta allo stomaco, la stessa di sempre.</div>
           </div>
         </div>
         <div class="pain-col">
@@ -633,23 +628,23 @@
     </div>
   </section>
 
-  <!-- ═══ SEZ. 2 — IL COSTO — OFF-WHITE ═══ -->
+  <!-- SEZ. 2 — IL COSTO — OFF-WHITE -->
   <section class="band band-off is-light">
     <div class="band-inner">
       <div class="sec-label reveal">Il Costo di Non Agire</div>
       <h2 class="sh2 reveal">Immagina tra <em>12 mesi.</em><br>Stesso schema. Stesse ore. Stesso tetto.</h2>
       <div class="cost-body reveal">
-        <p>Solo che nel frattempo qualcun altro nella tua nicchia — magari meno bravo di te, magari con metà della tua esperienza — avrà costruito un team, un sistema, un business che gira anche quando lui non c'è. Avrà smesso di vendere ore.</p>
+        <p>Solo che nel frattempo qualcun altro nella tua nicchia, magari meno bravo di te, magari con metà della tua esperienza, avrà costruito un team, un sistema, un business che gira anche quando lui non c'è. Avrà smesso di vendere ore.</p>
         <p><strong>Tu no.</strong></p>
         <p>Non è una minaccia. È matematica: quello che non cambi oggi, lo trascini identico nell'anno prossimo.</p>
       </div>
       <div class="cost-callout reveal">
-        <p>Ogni mese fermo a questa cifra non è un mese neutro. È un mese che non torna indietro, in cui il tuo tempo — <em>la risorsa che non puoi ricomprare</em> — è stato scambiato ancora una volta per un fatturato che non cresce.</p>
+        <p>Ogni mese fermo a questa cifra non è un mese neutro. È un mese che non torna indietro, in cui il tuo tempo, <em>la risorsa che non puoi ricomprare,</em> è stato scambiato ancora una volta per un fatturato che non cresce.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SEZ. 3 — LA PROMESSA — DARK NAVY LT ═══ -->
+  <!-- SEZ. 3 — LA PROMESSA — DARK NAVY LT -->
   <section class="band band-dark2 is-dark">
     <div class="band-inner">
       <div class="promise-grid">
@@ -680,7 +675,7 @@
     </div>
   </section>
 
-  <!-- ═══ SEZ. 4 — COSA SCOPRIRAI — WHITE ═══ -->
+  <!-- SEZ. 4 — COSA SCOPRIRAI — WHITE -->
   <section class="band band-white is-light">
     <div class="band-inner">
       <div class="sec-label reveal">Cosa Scoprirai</div>
@@ -688,7 +683,7 @@
       <div class="bullets">
         <div class="bullet-row reveal">
           <span class="bullet-n">01</span>
-          <div class="bullet-t"><strong>Perché "lavorare di più" ti sta allontanando dalla scalabilità</strong>, non avvicinando — e qual è l'unica leva che conta davvero.</div>
+          <div class="bullet-t"><strong>Perché "lavorare di più" ti sta allontanando dalla scalabilità,</strong> non avvicinando: qual è l'unica leva che conta davvero.</div>
         </div>
         <div class="bullet-row reveal">
           <span class="bullet-n">02</span>
@@ -696,7 +691,7 @@
         </div>
         <div class="bullet-row reveal">
           <span class="bullet-n">03</span>
-          <div class="bullet-t"><strong>Come far percepire il triplo del valore alla tua offerta attuale</strong> — stessi servizi, prezzo diverso, zero resistenza in più dai clienti.</div>
+          <div class="bullet-t"><strong>Come far percepire il triplo del valore alla tua offerta attuale:</strong> stessi servizi, prezzo diverso, zero resistenza in più dai clienti.</div>
         </div>
         <div class="bullet-row reveal">
           <span class="bullet-n">04</span>
@@ -704,13 +699,13 @@
         </div>
         <div class="bullet-row reveal">
           <span class="bullet-n">05</span>
-          <div class="bullet-t"><strong>Il primo passo concreto per delegare senza perdere il controllo</strong> — quello che ti ha fatto fallire l'ultima volta che hai provato.</div>
+          <div class="bullet-t"><strong>Il primo passo concreto per delegare senza perdere il controllo,</strong> quello che ti ha fatto fallire l'ultima volta che hai provato.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SEZ. 5 — CHI SONO — OFF-WHITE ═══ -->
+  <!-- SEZ. 5 — CHI SONO — OFF-WHITE -->
   <section class="band band-off is-light">
     <div class="band-inner">
       <div class="sec-label reveal">Chi Sono</div>
@@ -738,7 +733,7 @@
               <div class="case-desc">Triplicato il valore percepito dell'offerta. Stesso servizio, prezzo più alto, zero resistenza.</div>
             </div>
             <div class="case-card reveal">
-              <div class="case-result">−60%</div>
+              <div class="case-result">-60%</div>
               <div class="case-who">Agenzia · Napoli</div>
               <div class="case-desc">Ridotte le ore operative costruendo il primo sistema di delega funzionante.</div>
             </div>
@@ -748,7 +743,7 @@
     </div>
   </section>
 
-  <!-- ═══ SEZ. 6 — OBIEZIONI — DARK NAVY ═══ -->
+  <!-- SEZ. 6 — OBIEZIONI — DARK NAVY -->
   <section class="band band-dark is-dark">
     <div class="band-inner">
       <div class="sec-label reveal">Hai Dubbi?</div>
@@ -756,7 +751,7 @@
       <div class="obj-list">
         <div class="obj-item reveal">
           <button class="obj-q">"Ho già provato altri corsi, non funzionano per me."<span class="obj-toggle">+</span></button>
-          <div class="obj-a">Probabilmente ti hanno insegnato tattiche: un funnel, un'ads, uno script di vendita. Qui parliamo di struttura — perché senza sistema, ogni tattica si scontra sempre contro lo stesso muro. Sei tu.</div>
+          <div class="obj-a">Probabilmente ti hanno insegnato tattiche: un funnel, un'ads, uno script di vendita. Qui parliamo di struttura, perché senza sistema ogni tattica si scontra sempre contro lo stesso muro. Sei tu.</div>
         </div>
         <div class="obj-item reveal">
           <button class="obj-q">"Non ho tempo per un'altra formazione."<span class="obj-toggle">+</span></button>
@@ -770,7 +765,7 @@
     </div>
   </section>
 
-  <!-- ═══ CTA FINALE — DARK NAVY + GOLD BLOB ═══ -->
+  <!-- CTA FINALE — DARK NAVY + GOLD BLOB -->
   <section class="cta-final">
     <div class="cta-blob"></div>
     <div class="cta-inner">
@@ -781,8 +776,8 @@
       </div>
       <div class="cta-quote reveal">Le cose <em>NON cambiano.</em><br>Siamo noi che cambiamo.</div>
       <p class="cta-sub reveal">Accedi ora alla Roadmap Strategica gratuita e scopri i 5 colli di bottiglia che ti separano da un business realmente scalabile.</p>
-      <div class="urgency-strip reveal">Ogni mese fermo a questa cifra è un mese che non torna indietro. Il tuo tempo — <strong>la risorsa che non puoi ricomprare</strong> — vale troppo per continuare così.</div>
-      <button class="btn-primary open-modal reveal" style="font-size:13px; padding:16px 44px;">
+      <div class="urgency-strip reveal">Ogni mese fermo a questa cifra è un mese che non torna indietro. Il tuo tempo, <strong>la risorsa che non puoi ricomprare,</strong> vale troppo per continuare così.</div>
+      <button class="btn-primary open-modal reveal" style="font-size:14px; padding:17px 48px;">
         Sì, voglio la Roadmap Gratuita
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
       </button>
