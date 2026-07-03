@@ -325,6 +325,35 @@
     .case-who { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-muted); margin-bottom: 10px; }
     .case-desc { font-size: 15px; color: var(--tx-sub); line-height: 1.68; }
 
+    /* RESULTS VIDEO SLIDER */
+    .results-slider-wrap { display: flex; align-items: center; gap: 16px; margin-top: 48px; }
+    .results-slider { overflow: hidden; flex: 1; }
+    .results-track {
+      display: flex; gap: 24px;
+      transition: transform .45s cubic-bezier(.16,1,.3,1);
+      will-change: transform;
+    }
+    .res-video { flex: 0 0 calc(50% - 12px); }
+    .res-video-frame {
+      position: relative; aspect-ratio: 16/9; overflow: hidden;
+      border: 2px solid rgba(212,175,55,.55);
+      box-shadow: 0 16px 48px rgba(0,0,0,.45), 0 0 0 1px rgba(212,175,55,.12);
+    }
+    .res-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .res-arrow {
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      border: 2px solid rgba(212,175,55,.4); background: rgba(0,20,40,.6);
+      color: var(--gold); font-size: 22px; font-weight: 300; font-family: serif;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .res-arrow:hover:not(:disabled) { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .res-arrow:disabled { opacity: .25; cursor: not-allowed; }
+    @media(max-width:640px){
+      .res-video { flex: 0 0 100%; }
+      .res-arrow { width: 36px; height: 36px; font-size: 18px; }
+    }
+
     /* REVIEWS */
     .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
     .rev-card {
@@ -532,7 +561,7 @@
       </button>
       <div class="trust-bar reveal">
         <div class="trust-item">
-          <span class="trust-num">20+</span>
+          <span class="trust-num">&lt;20</span>
           <span class="trust-lbl">Min. di contenuto</span>
         </div>
         <div class="trust-item">
@@ -691,7 +720,7 @@
   <section class="band band-white is-light">
     <div class="band-inner">
       <div class="sec-label reveal">Cosa Scoprirai</div>
-      <h2 class="sh2 reveal">In poco più di <em>20 minuti,</em> scoprirai:</h2>
+      <h2 class="sh2 reveal">In meno di <em>20 minuti,</em> scoprirai:</h2>
       <div class="bullets">
         <div class="bullet-row reveal">
           <span class="bullet-n">01</span>
@@ -760,24 +789,43 @@
           <p class="reveal">Per l'assenza di un sistema.</p>
           <p class="reveal">Quel sistema oggi ha un nome: <strong>Professionista Scalabile.</strong></p>
           <p class="reveal">E in questa Masterclass ti mostro il cuore del metodo, gratis, senza trucchi.</p>
-          <div class="cases-row">
-            <div class="case-card reveal">
-              <div class="case-result">+€8k</div>
-              <div class="case-who">Coach · Milano</div>
-              <div class="case-desc">Da 5k a 13k mensili in 90 giorni applicando il metodo, senza assumere nessuno.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RISULTATI VIDEO SLIDER — DARK NAVY DK -->
+  <section class="band band-dark is-dark" style="background:var(--navy-dk);">
+    <div class="band-inner">
+      <div class="sec-label reveal">I Risultati</div>
+      <h2 class="sh2 reveal">I risultati dei professionisti<br><em>seguiti</em></h2>
+      <div class="results-slider-wrap reveal">
+        <button class="res-arrow" id="resPrev" disabled aria-label="Precedente">&#8249;</button>
+        <div class="results-slider" id="resultsSlider">
+          <div class="results-track" id="resultsTrack">
+            <div class="res-video">
+              <div class="res-video-frame">
+                <iframe src="https://player.vimeo.com/video/1176998220?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
-            <div class="case-card reveal">
-              <div class="case-result">×3</div>
-              <div class="case-who">Consulente · Roma</div>
-              <div class="case-desc">Triplicato il valore percepito dell'offerta. Stesso servizio, prezzo più alto, zero resistenza.</div>
+            <div class="res-video">
+              <div class="res-video-frame">
+                <iframe src="https://player.vimeo.com/video/1176996194?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
-            <div class="case-card reveal">
-              <div class="case-result">-60%</div>
-              <div class="case-who">Agenzia · Napoli</div>
-              <div class="case-desc">Ridotte le ore operative costruendo il primo sistema di delega funzionante.</div>
+            <div class="res-video">
+              <div class="res-video-frame">
+                <iframe src="https://player.vimeo.com/video/1116753791?h=02735c9425&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="res-video">
+              <div class="res-video-frame">
+                <iframe src="https://player.vimeo.com/video/1116753446?h=cb3d24ea45&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
         </div>
+        <button class="res-arrow" id="resNext" aria-label="Successivo">&#8250;</button>
       </div>
     </div>
   </section>
@@ -786,7 +834,7 @@
   <section class="band band-dark is-dark">
     <div class="band-inner">
       <div class="sec-label reveal">Cosa Dicono</div>
-      <h2 class="sh2 reveal">Risultati reali.<br><em>Parole loro.</em></h2>
+      <h2 class="sh2 reveal">Risultati reali.<br><em>Parole dei nostri clienti.</em></h2>
       <div class="reviews-grid">
 
         <div class="rev-card reveal">
@@ -1019,6 +1067,35 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Results video slider
+    (function() {
+      const track   = document.getElementById('resultsTrack');
+      const slider  = document.getElementById('resultsSlider');
+      const btnPrev = document.getElementById('resPrev');
+      const btnNext = document.getElementById('resNext');
+      const TOTAL   = 4;
+      let idx = 0;
+
+      function perPage() { return window.innerWidth <= 640 ? 1 : 2; }
+
+      function goTo(n) {
+        const pp   = perPage();
+        const max  = TOTAL - pp;
+        idx = Math.max(0, Math.min(n, max));
+        const gap  = 24;
+        const itemW = (slider.offsetWidth - gap * (pp - 1)) / pp;
+        const step  = itemW + gap;
+        track.style.transform = 'translateX(-' + (idx * step) + 'px)';
+        btnPrev.disabled = idx === 0;
+        btnNext.disabled = idx >= max;
+      }
+
+      btnPrev.addEventListener('click', () => goTo(idx - 1));
+      btnNext.addEventListener('click', () => goTo(idx + 1));
+      window.addEventListener('resize', () => goTo(idx));
+      goTo(0);
+    })();
 
     document.querySelectorAll('.obj-q').forEach(btn => {
       btn.addEventListener('click', () => {
