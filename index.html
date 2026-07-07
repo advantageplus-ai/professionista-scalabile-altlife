@@ -1070,7 +1070,7 @@
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    const GAS_URL = 'PLACEHOLDER_GAS_URL';
+    const MAKE_URL = 'https://hook.eu2.make.com/xvcn3qs6lpxq81j0trqsf6w597t376c8';
     document.getElementById('optin-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn      = document.getElementById('form-submit-btn');
@@ -1087,10 +1087,16 @@
       btn.disabled = true;
       btn.textContent = 'Un momento...';
       try {
-        await fetch(GAS_URL, {
+        await fetch(MAKE_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nome, cognome, email, telefono }),
+          body: JSON.stringify({
+            Nome: nome,
+            Cognome: cognome,
+            Email: email,
+            Telefono: telefono,
+            form_name: 'Professionista Scalabile - optin'
+          }),
           mode: 'no-cors'
         });
       } catch (_) {}
