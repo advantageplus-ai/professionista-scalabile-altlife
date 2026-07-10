@@ -1071,6 +1071,9 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
     const MAKE_URL = 'https://hook.eu2.make.com/xvcn3qs6lpxq81j0trqsf6w597t376c8';
+    // Incolla qui l'URL della tua App Web Google Apps Script dopo averla pubblicata
+    const GAS_URL  = 'https://script.google.com/macros/s/AKfycbxwzIRVHDGwfAbpVaLMv9bwCv1T8t0r12_4q7YJlY4rx37iQhKY9ZsuywaFpW3NR4R2ig/exec';
+
     document.getElementById('optin-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn      = document.getElementById('form-submit-btn');
@@ -1086,19 +1089,36 @@
       }
       btn.disabled = true;
       btn.textContent = 'Un momento...';
+
+      const payload = JSON.stringify({
+        Nome: nome,
+        Cognome: cognome,
+        Email: email,
+        Telefono: telefono,
+        form_name: 'Professionista Scalabile - optin'
+      });
+
+      // Make.com (salvataggio dati)
       try {
         await fetch(MAKE_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            Nome: nome,
-            Cognome: cognome,
-            Email: email,
-            Telefono: telefono,
-            form_name: 'Professionista Scalabile - optin'
-          })
+          body: payload
         });
       } catch (_) {}
+
+      // Google Apps Script (notifica email a rebecca@altlifeagency.com)
+      if (GAS_URL !== 'INCOLLA_QUI_URL_GAS') {
+        try {
+          fetch(GAS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: payload,
+            mode: 'no-cors'
+          });
+        } catch (_) {}
+      }
+
       window.location.href = 'masterclass.html';
     });
     document.querySelectorAll('.form-input').forEach(input => {
